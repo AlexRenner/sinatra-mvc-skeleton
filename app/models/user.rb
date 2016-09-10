@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
-  has_secure_password
-  # Remember to create a migration!
+	has_many :posts
+	has_many :comments, foreign_key: :commentor_id
+	has_many :commented_posts, through: :comments, source: :post
+	#time to break convention!
 end
